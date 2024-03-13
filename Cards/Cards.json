@@ -1,0 +1,117 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/Cards.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": false
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/assers/\u8bc1\u4ef6.png"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/gui;gui/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/utils;utils/"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "ttkbootstrap"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "messagebox"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "filedialog"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "faker"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "requests"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "json"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "sqlite3"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "random"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "tkinter"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "calendar"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "threading"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "datetime"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}
