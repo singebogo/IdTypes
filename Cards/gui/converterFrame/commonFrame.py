@@ -33,10 +33,11 @@ class CommonConverterFrame(ttk.Frame):
         scrollbar_v.pack(side=tk.RIGHT, fill=tk.Y)
         scrollbar_h = ttk.Scrollbar(self.log_frame, orient=tk.HORIZONTAL)
         scrollbar_h.pack(side=tk.BOTTOM, fill=tk.X)
-        self.text1 = tk.Text(self.log_frame, width=48, height=18,
+        self.text1 = tk.Text(self.log_frame, width=48, height=20,
                              yscrollcommand=scrollbar_v.set,
                              xscrollcommand=scrollbar_h.set,
                              wrap=tk.NONE)
+        self.text1.tag_configure("tag_name", justify='center')
         self.text1.pack(expand=tk.YES, fill=tk.BOTH)
         scrollbar_v.config(command=self.text1.yview)  # 垂直滚动条绑定text
         scrollbar_h.config(command=self.text1.xview)  # 水平滚动条绑定text

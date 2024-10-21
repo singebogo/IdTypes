@@ -9,11 +9,10 @@ from utils.contains import key
 
 class SettingConverterFrame(ttk.Frame):
 
-    def __init__(self, container, unit_from, converter):
+    def __init__(self, container):
         super().__init__(container)
 
         self.unit_from = "高德KEY:"
-        self.converter = converter
 
         # field options
         options = {'padx': 5, 'pady': 1}
@@ -44,7 +43,7 @@ class SettingConverterFrame(ttk.Frame):
         self.log_label.grid(row=2,column=0,columnspan=4, **options)
 
         # add padding to the frame and show it
-        self.grid(column=0, row=1, sticky="nsew", **options)
+        self.grid(column=0, row=2, sticky="nsew", **options)
 
     def convert(self, event=None):
         """  Handle button click event

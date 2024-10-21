@@ -18,10 +18,9 @@ class PersonConverterFrame(ttk.LabelFrame):
         options = {'padx': 0, 'pady': 1}
 
         self['text'] = '个人证件类型'
-
-        self.radio_frame = ttk.Frame(self)
-        self.init_radio_frame(**options)
-        self.radio_frame.grid(column=0, row=1,  sticky='w', **options)
+        frame = tk.Frame(self)
+        frame.grid(column=0, row=0, sticky='w', **options)
+        self.init_radio_frame(frame, **options)
 
         self.grid(column=0, row=1, sticky="nsew", **options)
 
@@ -32,25 +31,24 @@ class PersonConverterFrame(ttk.LabelFrame):
             'Person',
             TemperatureConverter.fahrenheit_to_celsius)
 
-        # self.frames[1] = OtherConverterFrame(
-        #     self,
-        #     'Group',
-        #     TemperatureConverter.celsius_to_fahrenheit)
+        self.frames[1] = OtherConverterFrame(
+            self,
+            'Group')
 
         self.change_frame()
 
-    def init_radio_frame(self, **options):
+    def init_radio_frame(self, frame, **options):
         # radio buttons
         self.selected_value = tk.IntVar()
         self.radio1 = ttk.Radiobutton(
-            self.radio_frame,
+            frame,
             text='身份证',
             value=0,
             variable=self.selected_value,
             command=self.change_frame).grid(column=0, row=0, sticky='E', **options)
 
         # self.radio2 = ttk.Radiobutton(
-        #     self.radio_frame,
+        #     frame,
         #     text='其他',
         #     value=1,
         #     variable=self.selected_value,

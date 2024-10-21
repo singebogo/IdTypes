@@ -157,7 +157,11 @@ class IDConverterFrame(ttk.Frame):
             addr = ""
             if addrModel == 2:
                 addr = self.region.province_var.get()+self.region.city_var.get()+self.region.district_var.get()+\
-                       self.region.street_var.get()+" " + self.region.adcode
+                       self.region.street_var.get()+" " + "".join(random.choices("可是经过科学家的研究现在已经发现许多动物"
+                                                                                 "例如海豚鲸黑猩猩金丝雀蜜蜂等也有广义的语言"
+                                                                                 "包括人类听得见的或是听不见的有的还相当复杂"
+                                                                                 "于是语言似乎不能视作人类的专利了尽管在许多方面"
+                                                                                 "动物的语言与人类的语言无法相提并论", k=3)) + "街道"+ "".join(random.choices('0123456789', k=2)) +"号"
             else:
                 fake_addr = Other(addrModel)
                 addr = fake_addr.address()

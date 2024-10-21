@@ -16,47 +16,48 @@ class ControlFrame(ttk.LabelFrame):
         self['text'] = '类型'
         options = {'padx': 0, 'pady': 1}
         # radio buttons
+        frame = tk.Frame(self)
         self.selected_value = tk.IntVar()
         ttk.Radiobutton(
-            self,
+            frame,
             text='Person',
             value=0,
             variable=self.selected_value,
             command=self.change_frame).grid(column=0, row=0, **options)
 
         ttk.Radiobutton(
-            self,
+            frame,
             text='Group',
             value=1,
             variable=self.selected_value,
             command=self.change_frame).grid(column=1, row=0, **options)
 
-        ttk.Radiobutton(
-            self,
-            text='setting',
-            value=2,
-            variable=self.selected_value,
-            command=self.change_frame).grid(column=2, row=0, **options)
-
+        # ttk.Radiobutton(
+        #     frame,
+        #     text='setting',
+        #     value=2,
+        #     variable=self.selected_value,
+        #     command=self.change_frame).grid(column=2, row=0, **options)
+        frame.grid(column=0, row=0, sticky='w', **options)
         self.grid(column=0, row=0, sticky='w', **options)
 
         # initialize frames
         self.frames = {}
         self.frames[0] = PersonConverterFrame(
-            container,
+            self,
             'Person',
             TemperatureConverter.fahrenheit_to_celsius)
 
         self.frames[1] = GroupConverterFrame(
-            container,
+            self,
             'Group',
             TemperatureConverter.celsius_to_fahrenheit)
-
-        self.frames[2] = SettingConverterFrame(
-            container,
-            'setting',
-            TemperatureConverter.celsius_to_fahrenheit)
-
+        #
+        # self.frames[2] = SettingConverterFrame(
+        #     container,
+        #     'setting',
+        #     TemperatureConverter.celsius_to_fahrenheit)
+        #
         self.change_frame()
 
     def change_frame(self):

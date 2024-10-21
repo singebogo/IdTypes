@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/Cards.py"
+   "value": "D:/Document/Document/document/python/GUIenv/GUI/IdTypes/Cards/Cards.py"
   },
   {
    "optionDest": "onefile",
@@ -19,7 +19,7 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/assers/\u8bc1\u4ef6.png"
+   "value": "D:/Document/Document/document/python/GUIenv/GUI/IdTypes/Cards/assers/\u8bc1\u4ef6.png"
   },
   {
    "optionDest": "clean_build",
@@ -55,11 +55,11 @@
   },
   {
    "optionDest": "datas",
-   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/gui;gui/"
+   "value": "D:/Document/Document/document/python/GUIenv/GUI/IdTypes/Cards/gui;gui/"
   },
   {
    "optionDest": "datas",
-   "value": "E:/Document/Document/python/GUIenv/GUI/Cards/utils;utils/"
+   "value": "D:/Document/Document/document/python/GUIenv/GUI/IdTypes/Cards/utils;utils/"
   },
   {
    "optionDest": "hiddenimports",
