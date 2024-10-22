@@ -5,7 +5,6 @@ from tkinter import ttk
 from tkinter.messagebox import showerror
 
 from utils.Calendar import Calendar
-from utils.region import select_province_sql, select_city_sql, select_district_sql, select_street_sql
 from utils.IDCards import generate_id
 from utils.other import Other
 from gui.converterFrame.commonFrame import CommonConverterFrame
@@ -44,11 +43,11 @@ class IDConverterFrame(ttk.Frame):
         self.other = OtherConverterFrame(self.Other_frame, self.region.text1)
         self.other.grid(column=0, row=0, sticky='w', **options)
         # button
-        self.convert_button = ttk.Button(self.Other_frame, text='身份证', width=8)
+        self.convert_button = tk.Button(self.Other_frame, text='身份证',  bg="#DCDCDC", width=8)
         self.convert_button.grid(column=1, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convert)
 
-        self.clear_btn = ttk.Button(self.Other_frame, text='清空', width=4,
+        self.clear_btn = tk.Button(self.Other_frame, text='清空', width=4, bg="#DCDCDC",
                                     command=lambda: self.region.text1.delete('1.0', tk.END))  # 开始按钮
         self.clear_btn.grid(row=0, column=2, sticky='w', **options)
 
@@ -103,7 +102,6 @@ class IDConverterFrame(ttk.Frame):
 
         self.labelOtherFrame.grid(column=0, row=1, sticky='w', **options)
 
-
     def init_date(self, **options):
         # 日期 label
         self.calendar_label = ttk.Label(self.data_frame, text="日期", width=4)
@@ -116,7 +114,7 @@ class IDConverterFrame(ttk.Frame):
         self.date_entry = ttk.Entry(self.data_frame, textvariable=self.date, width=10)
         self.date_entry.grid(column=1, row=1, sticky='w', **options)
         self.date_entry.focus()
-        self.date_btn = ttk.Button(self.data_frame, text='出生日期', width=8, command=lambda: self.getdate())  # 开始按钮
+        self.date_btn = tk.Button(self.data_frame, text='出生日期', bg="#DCDCDC",  width=8, command=lambda: self.getdate())  # 开始按钮
         self.date_btn.grid(row=1, column=2, sticky='w', **options)
 
         # 性别 label
@@ -124,7 +122,7 @@ class IDConverterFrame(ttk.Frame):
         self.sex_label.grid(column=3, row=1, sticky='w', **options)
 
         self.sex_var = tk.StringVar()
-        self.sex_com = ttk.Combobox(self.data_frame, textvariable=self.sex_var, width=2)
+        self.sex_com = ttk.Combobox(self.data_frame, textvariable=self.sex_var, state='readonly', width=2)
         self.sex_com['value'] = ('男', '女')
         self.sex_com.current(0)
         self.sex_com.grid(column=4, row=1, sticky='w', **options)
@@ -132,7 +130,7 @@ class IDConverterFrame(ttk.Frame):
     def getdate(self):
         x, y = self.date_btn.winfo_pointerxy()
 
-        for date in [Calendar((x - 100, y + 20 )).selection()]:
+        for date in [Calendar((x - 100, y + 20)).selection()]:
             if date:
                 self.date.set(date)
 
@@ -156,12 +154,11 @@ class IDConverterFrame(ttk.Frame):
             addrModel = self.selectedAddrValue.get()
             addr = ""
             if addrModel == 2:
-                addr = self.region.province_var.get()+self.region.city_var.get()+self.region.district_var.get()+\
-                       self.region.street_var.get()+" " + "".join(random.choices("可是经过科学家的研究现在已经发现许多动物"
-                                                                                 "例如海豚鲸黑猩猩金丝雀蜜蜂等也有广义的语言"
-                                                                                 "包括人类听得见的或是听不见的有的还相当复杂"
-                                                                                 "于是语言似乎不能视作人类的专利了尽管在许多方面"
-                                                                                 "动物的语言与人类的语言无法相提并论", k=3)) + "街道"+ "".join(random.choices('0123456789', k=2)) +"号"
+                addr = self.region.province_var.get() + self.region.city_var.get() + self.region.district_var.get() + \
+                       self.region.street_var.get() + "".join(random.choices(
+                    "可是经过科学家的研究现在已经发现许多动物例如海豚鲸黑猩猩金丝雀蜜蜂等也有广义的语言包括人类听得见的或是听不见的有的还相当"
+                    "复杂于是语言似乎不能视作人类的专利了尽管在许多方面动物的语言与人类的语言无法相提并论",
+                    k=3)) + "街道" + "".join(random.choices('0123456789', k=2)) + "号"
             else:
                 fake_addr = Other(addrModel)
                 addr = fake_addr.address()

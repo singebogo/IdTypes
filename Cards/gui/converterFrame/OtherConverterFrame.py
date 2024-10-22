@@ -33,22 +33,22 @@ class OtherConverterFrame(ttk.Frame):
 
     def init_passport(self, container, **options):
         # button
-        self.passport_button = ttk.Button(container, text='护照', width=4)
+        self.passport_button = tk.Button(container, text='护照',  bg="#DCDCDC", width=4)
         self.passport_button.grid(column=0, row=0, sticky='w', **options)
         self.passport_button.configure(command=self.convertPassport)
 
         # button
-        self.passport_button = ttk.Button(container, text='军人证', width=6)
+        self.passport_button = tk.Button(container, text='军人证', bg="#DCDCDC",  width=6)
         self.passport_button.grid(column=1, row=0, sticky='w', **options)
         self.passport_button.configure(command=self.convertMilitary)
 
         # 台胞证
-        self.passport_button = ttk.Button(container, text='台胞证', width=6)
+        self.passport_button = tk.Button(container, text='台胞证', bg="#DCDCDC",  width=6)
         self.passport_button.grid(column=2, row=0, sticky='w', **options)
         self.passport_button.configure(command=self.convertTaiwan)
 
         # 港澳通行证
-        self.passport_button = ttk.Button(container, text='港澳通行证', width=10)
+        self.passport_button = tk.Button(container, text='港澳通行证', bg="#DCDCDC",  width=10)
         self.passport_button.grid(column=3, row=0, sticky='w', **options)
         self.passport_button.configure(command=self.convertHangkangAomen)
 

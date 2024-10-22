@@ -3,7 +3,6 @@ import random
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showerror
-
 from utils.Calendar import Calendar
 from utils.region import select_province_sql, select_city_sql, select_district_sql, select_street_sql
 
@@ -50,7 +49,7 @@ class CommonConverterFrame(ttk.Frame):
         self.province_label.grid(column=0, row=0, sticky='w', **options)
 
         self.province_var = tk.StringVar()
-        self.province_com = ttk.Combobox(self.region_frame, textvariable=self.province_var, width=5)
+        self.province_com = ttk.Combobox(self.region_frame, textvariable=self.province_var, state='readonly', width=5)
         self.province_com.grid(column=1, row=0, sticky='w', **options)
         self.province_com.bind('<<ComboboxSelected>>', self.province_com_select)
 
@@ -59,7 +58,7 @@ class CommonConverterFrame(ttk.Frame):
         self.city_L.grid(column=2, row=0, sticky='w', **options)
 
         self.city_var = tk.StringVar()
-        self.city_com = ttk.Combobox(self.region_frame, textvariable=self.city_var, width=5)
+        self.city_com = ttk.Combobox(self.region_frame, textvariable=self.city_var, state='readonly', width=5)
         self.city_com.grid(column=3, row=0, sticky='w', **options)
         self.city_com.bind('<<ComboboxSelected>>', self.city_com_select)
 
@@ -68,7 +67,7 @@ class CommonConverterFrame(ttk.Frame):
         self.district_label.grid(column=4, row=0, sticky='w', **options)
 
         self.district_var = tk.StringVar()
-        self.district_com = ttk.Combobox(self.region_frame, textvariable=self.district_var, width=5)
+        self.district_com = ttk.Combobox(self.region_frame, textvariable=self.district_var, state='readonly', width=5)
         self.district_com.grid(column=5, row=0, sticky='w', **options)
         self.district_com.bind('<<ComboboxSelected>>', self.district_com_select)
 
@@ -77,12 +76,13 @@ class CommonConverterFrame(ttk.Frame):
         self.street_label.grid(column=6, row=0, sticky='w', **options)
 
         self.street_var = tk.StringVar()
-        self.street_com = ttk.Combobox(self.region_frame, textvariable=self.street_var, width=6)
+        self.street_com = ttk.Combobox(self.region_frame, textvariable=self.street_var, state='readonly', width=6)
         self.street_com.grid(column=7, row=0, sticky='w', **options)
         self.street_com.bind('<<ComboboxSelected>>', self.street_com_select)
 
         # button
-        self.convert_button = ttk.Button(self.region_frame, text='☠', width=2)
+        # 使用PhotoImage函数导入图像
+        self.convert_button = tk.Button(self.region_frame, text="加载", bg="#DCDCDC",width=4)
         self.convert_button.grid(column=8, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.reload)
 
@@ -127,7 +127,6 @@ class CommonConverterFrame(ttk.Frame):
             province_index = self.province_com['value'].index(province)
             province_tuple = self.provinces[province_index]
             self.adcode = province_tuple[4]
-
 
     def city_com_select(self, even):
         province = self.province_var.get()
@@ -180,7 +179,7 @@ class CommonConverterFrame(ttk.Frame):
             self.street_var.set("")
 
             self.districts = select_district_sql(province_tuple[0])
-            if(len(self.districts) > 0):
+            if (len(self.districts) > 0):
                 self.district_com['value'] = [district[2] for district in self.districts]
                 self.district_com.current(0)
                 district = self.district_var.get()
@@ -244,8 +243,6 @@ class CommonConverterFrame(ttk.Frame):
             self.street_com['value'] = [street[2] for street in self.streets]
             self.street_com.current(0)
 
-
     def reload(self):
         self.provinces = select_province_sql()
         self.init_data()
-

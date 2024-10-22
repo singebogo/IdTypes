@@ -49,7 +49,7 @@ class GroupConverterFrame(ttk.Frame):
         self.initTaxRegistration(self.labelOtherFrame)
         frame = ttk.Frame(self.labelOtherFrame)
         # button
-        self.clear_btn = ttk.Button(frame, text='清空', width=4,
+        self.clear_btn = tk.Button(frame, text='清空', width=4,  bg="#DCDCDC",
                                    command=lambda: self.region.text1.delete('1.0', tk.END))  # 开始按钮
         self.clear_btn.grid(row=1, column=0, sticky='w', **options)
         frame.grid(column=0, row=5, sticky='w', **options)
@@ -92,7 +92,7 @@ class GroupConverterFrame(ttk.Frame):
         self.selectedCreditCodeValue.set(0)
 
         # button
-        self.convert_button = ttk.Button(self.labelCreditCodeFrame, text='统一社会信用代码', width=15)
+        self.convert_button = tk.Button(self.labelCreditCodeFrame, text='统一社会信用代码',  bg="#DCDCDC", width=15)
         self.convert_button.grid(column=4, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convert)
 
@@ -119,7 +119,7 @@ class GroupConverterFrame(ttk.Frame):
         self.selectedOganizationValue.set(0)
 
         # button
-        self.convert_button = ttk.Button(self.labelOganizationeFrame, text='组织机构代码', width=12)
+        self.convert_button = tk.Button(self.labelOganizationeFrame, text='组织机构代码', bg="#DCDCDC", width=12)
         self.convert_button.grid(column=3, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convertOganization)
 
@@ -150,7 +150,7 @@ class GroupConverterFrame(ttk.Frame):
         self.selectedTaxpayerIdValue.set(0)
 
         # button
-        self.convert_button = ttk.Button(self.labelTaxpayerIdFrame, text='纳税人识别号', width=12)
+        self.convert_button = tk.Button(self.labelTaxpayerIdFrame, text='纳税人识别号', bg="#DCDCDC", width=12)
         self.convert_button.grid(column=3, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convertTaxpayerId)
 
@@ -161,7 +161,7 @@ class GroupConverterFrame(ttk.Frame):
     def initIndustrialId(self, container, **options):
         frame = ttk.Frame(container)
         # button
-        self.convert_button = ttk.Button(frame, text='工商注册号', width=12)
+        self.convert_button = tk.Button(frame, text='工商注册号', bg="#DCDCDC", width=12)
         self.convert_button.grid(column=0, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convertIndustrial)
         frame.grid(column=4, row=0, sticky='w', **options)
@@ -186,7 +186,7 @@ class GroupConverterFrame(ttk.Frame):
         self.selectedTaxRegistrationValue.set(0)
 
         # button
-        self.convert_button = ttk.Button(self.labelTaxRegistrationFrame, text='税务登记号', width=12)
+        self.convert_button = tk.Button(self.labelTaxRegistrationFrame, text='税务登记号', bg="#DCDCDC", width=12)
         self.convert_button.grid(column=3, row=0, sticky='w', **options)
         self.convert_button.configure(command=self.convertTaxRegistration)
 

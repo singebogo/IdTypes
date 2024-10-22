@@ -46,17 +46,17 @@ class PhoneConverterFrame(ttk.Frame):
 
         # button
 
-        self.all_btn = ttk.Button(frame, text='全选', width=4,
+        self.all_btn = tk.Button(frame, text='全选', width=4, bg="#DCDCDC",
                                     command=self.all)  # 开始按钮
         self.all_btn.grid(row=0, column=0, sticky='w', **self.options)
 
-        self.clear_all_btn = ttk.Button(frame, text='不全选', width=6,
+        self.clear_all_btn = tk.Button(frame, text='不全选', width=6, bg="#DCDCDC",
                                     command=self.clearAll)  # 开始按钮
         self.clear_all_btn.grid(row=0, column=1, sticky='w', **self.options)
 
-        self.gener_btn = ttk.Button(frame, text='生成', width=4, command=self.fun)  # 开始按钮
+        self.gener_btn = tk.Button(frame, text='生成', width=4, bg="#DCDCDC", command=self.fun)  # 开始按钮
         self.gener_btn.grid(row=0, column=4, sticky='w', **self.options)
-        self.clear_btn = ttk.Button(frame, text='清空', width=4,
+        self.clear_btn = tk.Button(frame, text='清空', width=4, bg="#DCDCDC",
                                     command=lambda: self.text1.delete('1.0', tk.END))  # 开始按钮
         self.clear_btn.grid(row=0, column=5, sticky='w', **self.options)
 
