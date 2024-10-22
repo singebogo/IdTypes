@@ -128,6 +128,28 @@ class CommonConverterFrame(ttk.Frame):
             province_tuple = self.provinces[province_index]
             self.adcode = province_tuple[4]
 
+    def getCityCode(self):
+        street = self.street_var.get()
+        province = self.province_var.get()
+        district = self.district_var.get()
+        city = self.city_var.get()
+        if street:
+            index = self.street_com['value'].index(street)
+            street_tuple = self.streets[index]
+            self.citycode = street_tuple[3]
+        elif district:
+            distric_index = self.district_com['value'].index(district)
+            district_tuple = self.districts[distric_index]
+            self.citycode = district_tuple[3]
+        elif city:
+            city_index = self.city_com['value'].index(city)
+            city_tuple = self.citys[city_index]
+            self.citycode = city_tuple[3]
+        else:
+            province_index = self.province_com['value'].index(province)
+            province_tuple = self.provinces[province_index]
+            self.citycode = province_tuple[3]
+
     def city_com_select(self, even):
         province = self.province_var.get()
         index = self.province_com['value'].index(province)

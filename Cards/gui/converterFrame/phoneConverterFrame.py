@@ -25,13 +25,21 @@ class PhoneConverterFrame(ttk.Frame):
 
         # field options
         self.options = {'padx': 0, 'pady': 0}
+        self.labelFrame = ttk.LabelFrame(self, text="区域")
+        self.region_frame = ttk.Frame(self.labelFrame)
+        self.region = CommonConverterFrame(self.region_frame)
+        self.region.grid(column=0, row=0, sticky='w', **self.options)
+        self.region_frame.grid(column=0, row=0, sticky='w', **self.options)
 
-        self.labelFrame = ttk.LabelFrame(self, text=title)
+        self.labelFrame.grid(column=0, row=0, sticky='w', **self.options)
+
+        self.labelFrame1 = ttk.LabelFrame(self, text=title)
+        self.count = self.count + 1
         self.init_mobie_segment()
         self.init_other_segment(vritual_segment, "虚拟号码段", True)
         self.init_other_segment(iot_segment, "物联网号码段")
         self.init_other_segment(satellite_segment, "卫星电话号段")
-        self.labelFrame.grid(column=0, row=0, sticky='w', **self.options)
+        self.labelFrame1.grid(column=0, row=self.count, sticky='w', **self.options)
 
         frame = ttk.Frame(self)
         self.count = self.count + 1
@@ -88,6 +96,7 @@ class PhoneConverterFrame(ttk.Frame):
 
     def target(self):
         self.text1.delete('1.0', tk.END)
+        self.region.getCityCode()
         self.needGener = []
         for i in range(0, len(self.checkboxes)):
             if self.checkboxes[i].get():
@@ -106,12 +115,12 @@ class PhoneConverterFrame(ttk.Frame):
                 # 循环生成
                 for ins in range(0, self.num, len(self.needGener)):
                     for needse in self.needGener:
-                        self.text1.insert(tk.END, gener(needse) + '\n')
+                        self.text1.insert(tk.END, gener(needse, self.region.citycode[1:]) + '\n')
                         self.text1.see("end")
             else:
                 phones = random.choices(self.needGener, k=int(self.num))
                 for needse in phones:
-                    self.text1.insert(tk.END, gener(needse) + '\n')
+                    self.text1.insert(tk.END, gener(needse, self.region.citycode[1:]) + '\n')
                     self.text1.see("end")
 
 
@@ -136,7 +145,7 @@ class PhoneConverterFrame(ttk.Frame):
     def init_mobie_segment(self):
         keys = [k for k in mobie_segment.keys()]
         for i in range(0, len(keys)):
-            lf = ttk.LabelFrame(self.labelFrame, text=keys[i])
+            lf = ttk.LabelFrame(self.labelFrame1, text=keys[i])
             self.init_every_category_detail(lf, mobie_segment.get(keys[i]))
             lf.grid(column=0, row=i, sticky='w', **self.options)
             self.count = self.count + 1
@@ -163,7 +172,7 @@ class PhoneConverterFrame(ttk.Frame):
 
     def init_other_segment(self, dict, title, flag=False):
         self.count = self.count + 1
-        labelFrame = ttk.LabelFrame(self, text=title)
+        labelFrame = ttk.LabelFrame(self.labelFrame1, text=title)
         labelFrame.grid(column=0, row=self.count, sticky='w', **self.options)
         keys = [k for k in dict.keys()]
         row = 0

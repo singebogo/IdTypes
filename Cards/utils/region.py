@@ -8,12 +8,7 @@ from utils.aesUtil import dectry
 from utils.contains import key as key1, provinces
 
 
-def local_db():
-        appauthor = os.getlogin()
-        data_dir = user_data_dir("cards", appauthor, roaming=True)
-        os.makedirs(data_dir) if not os.path.exists(data_dir) else ""
-        data_dir = Path(data_dir + os.sep + "nba.db")
-        return data_dir
+from .dbLites.comLite import local_db
 
 def dele():
         """删除数据"""

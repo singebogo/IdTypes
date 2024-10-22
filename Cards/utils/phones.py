@@ -1,15 +1,16 @@
 # 手机号码段
 import random
-
+from .areaCode import AreaCode_inland
 # 国内电话长度 11
 # 3位网号+4位HLR号+4位的个人代码
 PHONE_LEN = 11
 PERSON_LEN = 4
 
+
 mobie_segment = {
     '中国移动号码段': [["134(0-8)", "13(5-9)", "147", "15(0-2)", "15(7-9)", "198"],
-                 ["17(2,8)","18(2-4)", "18(7-8)"]],  # 中国移动号码段
-    '中国联通号码段': ["13(0-2)", "145", "15(5-6)", "166","17(1,5,6)", "18(5-6)"],  # 中国联通号码段
+                ["17(2,8)", "18(2-4)", "18(7-8)"]],  # 中国移动号码段
+    '中国联通号码段': ["13(0-2)", "145", "15(5-6)", "166", "17(1,5,6)", "18(5-6)"],  # 中国联通号码段
     '中国电信号码段': ["133", "149", "153", "17(3, 7)", "18(0,1,9)", "19(1,2,3,9)"],  # 中国电信号码段
     # '中国广电号段': []  # 中国广电号段
 }
@@ -55,26 +56,27 @@ def paser(phone):
         lbracket = phone.find('(')
         rbracket = phone.find(')')
         head = phone[:lbracket]
-        bracket = phone[lbracket+1:rbracket]
+        bracket = phone[lbracket + 1:rbracket]
         segment = []  # 号码段
         if ',' in bracket:
-            segment = [i.strip() for i  in bracket.split(',')]
+            segment = [i.strip() for i in bracket.split(',')]
         elif '-' in bracket:
             sections = bracket.split('-')
-            segment = [i for i in range(int(sections[0]), int(sections[1])+1)]
+            segment = [i for i in range(int(sections[0]), int(sections[1]) + 1)]
         else:
             pass
-        phone = [head+ str(i) for i in segment]
+        phone = [head + str(i) for i in segment]
         return phone
     else:
         return [phone, ]
 
+
 # Home Location Register
-def gener(segment):
-    HLR_l = PHONE_LEN - PERSON_LEN - len(str(segment))
+def gener(segment, aeraCode):
+    HLR_l = PHONE_LEN - PERSON_LEN - len(aeraCode) - len(str(segment))
     HLR = "".join(random.choice(basic_num()) for i in range(HLR_l))
     person = "".join(random.choice(basic_num()) for i in range(PERSON_LEN))
-    return str(segment) + HLR + person
+    return str(segment) + aeraCode + HLR + person
 
 
 def random_phone():
@@ -85,5 +87,22 @@ def random_phone():
     i_key = random.choice(ikeys)
     value = value[i_key]
     c_segment = random.choice(value)
+    # 可能是个list
+    if isinstance(c_segment, list):
+        c_segment = random.choice(c_segment)
     segments = paser(c_segment)
-    return gener(segments[0])
+
+
+    akeys = [key for key in AreaCode_inland.keys()]
+    a_key = random.choice(akeys)
+    a_value = AreaCode_inland[a_key]
+    subkeys = [key for key in a_value.keys()]
+    sub_key = random.choice(subkeys)
+    aeraCode = a_value[sub_key]
+    if aeraCode.find('-') > 0:
+        aeraCode = aeraCode.split('-')
+        aeraCode = random.choice(aeraCode)
+    return gener(segments[0], aeraCode[1:])
+
+
+
