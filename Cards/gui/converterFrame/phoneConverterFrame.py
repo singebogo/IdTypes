@@ -42,12 +42,17 @@ class PhoneConverterFrame(ttk.Frame):
         self.labelFrame1.grid(column=0, row=self.count, sticky='w', **self.options)
 
         frame = ttk.Frame(self)
+        self.countryvar = tk.IntVar()
+        self.countryvar.set(0)
+        self.ck_country = tk.Checkbutton(frame, text="国家区号", variable=self.countryvar)
+        self.ck_country.grid(row=0, column=0, sticky='w', **self.options)
+        self.checkBtns.append(self.ck_country)
         self.count = self.count + 1
         self.num_label = ttk.Label(frame, text="数目:", width=5)
-        self.num_label.grid(column=2, row=0, sticky='w', **self.options)
+        self.num_label.grid(column=3, row=0, sticky='w', **self.options)
         self.num_var = tk.StringVar()
         self.num_com = ttk.Combobox(frame, textvariable=self.num_var, state='readonly', width=5)
-        self.num_com.grid(column=3, row=0, sticky='w', **self.options)
+        self.num_com.grid(column=4, row=0, sticky='w', **self.options)
         self.num_com.bind('<<ComboboxSelected>>', self.num_com_select)
         self.num_com['value'] = (10, 50, 100, 500, 1000, 1000, 10000)
         self.num_com.current(0)
@@ -56,17 +61,17 @@ class PhoneConverterFrame(ttk.Frame):
 
         self.all_btn = tk.Button(frame, text='全选', width=4, bg="#DCDCDC",
                                     command=self.all)  # 开始按钮
-        self.all_btn.grid(row=0, column=0, sticky='w', **self.options)
+        self.all_btn.grid(row=0, column=1, sticky='w', **self.options)
 
         self.clear_all_btn = tk.Button(frame, text='不全选', width=6, bg="#DCDCDC",
                                     command=self.clearAll)  # 开始按钮
-        self.clear_all_btn.grid(row=0, column=1, sticky='w', **self.options)
+        self.clear_all_btn.grid(row=0, column=2, sticky='w', **self.options)
 
         self.gener_btn = tk.Button(frame, text='生成', width=4, bg="#DCDCDC", command=self.fun)  # 开始按钮
-        self.gener_btn.grid(row=0, column=4, sticky='w', **self.options)
+        self.gener_btn.grid(row=0, column=5, sticky='w', **self.options)
         self.clear_btn = tk.Button(frame, text='清空', width=4, bg="#DCDCDC",
                                     command=lambda: self.text1.delete('1.0', tk.END))  # 开始按钮
-        self.clear_btn.grid(row=0, column=5, sticky='w', **self.options)
+        self.clear_btn.grid(row=0, column=6, sticky='w', **self.options)
 
         frame.grid(column=0, row=self.count, sticky='w', **self.options)
 
@@ -98,6 +103,10 @@ class PhoneConverterFrame(ttk.Frame):
         self.text1.delete('1.0', tk.END)
         self.region.getCityCode()
         self.needGener = []
+        country = 0
+        if self.countryvar.get():
+            country = 1
+
         for i in range(0, len(self.checkboxes)):
             if self.checkboxes[i].get():
                 segments = paser(self.checkboxes_text[i].get())
@@ -107,7 +116,7 @@ class PhoneConverterFrame(ttk.Frame):
         # 判断是否有充足的数据
         if not len(self.needGener):
             for i in range(0, self.num):
-                self.text1.insert(tk.END, random_phone() + '\n')
+                self.text1.insert(tk.END, random_phone(country) + '\n')
                 self.text1.see("end")
         else:
             if int(self.num) > len(self.needGener):
@@ -115,12 +124,12 @@ class PhoneConverterFrame(ttk.Frame):
                 # 循环生成
                 for ins in range(0, self.num, len(self.needGener)):
                     for needse in self.needGener:
-                        self.text1.insert(tk.END, gener(needse, self.region.citycode[1:]) + '\n')
+                        self.text1.insert(tk.END, gener(needse, self.region.citycode[1:], country) + '\n')
                         self.text1.see("end")
             else:
                 phones = random.choices(self.needGener, k=int(self.num))
                 for needse in phones:
-                    self.text1.insert(tk.END, gener(needse, self.region.citycode[1:]) + '\n')
+                    self.text1.insert(tk.END, gener(needse, self.region.citycode[1:], country) + '\n')
                     self.text1.see("end")
 
 

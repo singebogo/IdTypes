@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from gui.converterFrame.filexPhoneConverterFrame import FixedlineTelephoneConverterFrame
+from gui.converterFrame.fixedLineTelephoneConverterFrame import FixedlineTelephoneConverterFrame
 from gui.converterFrame.phoneConverterFrame import PhoneConverterFrame
 
 

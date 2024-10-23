@@ -6,6 +6,7 @@ from .areaCode import AreaCode_inland
 PHONE_LEN = 11
 PERSON_LEN = 4
 
+country_code = '0086'
 
 mobie_segment = {
     '中国移动号码段': [["134(0-8)", "13(5-9)", "147", "15(0-2)", "15(7-9)", "198"],
@@ -72,14 +73,16 @@ def paser(phone):
 
 
 # Home Location Register
-def gener(segment, aeraCode):
+def gener(segment, aeraCode, country):
     HLR_l = PHONE_LEN - PERSON_LEN - len(aeraCode) - len(str(segment))
     HLR = "".join(random.choice(basic_num()) for i in range(HLR_l))
     person = "".join(random.choice(basic_num()) for i in range(PERSON_LEN))
+    if country:
+        return  country_code + '-' + str(segment) + aeraCode + HLR + person
     return str(segment) + aeraCode + HLR + person
 
 
-def random_phone():
+def random_phone(country):
     keys = [key for key in category.keys()]
     c_key = random.choice(keys)
     value = category[c_key]
@@ -102,7 +105,7 @@ def random_phone():
     if aeraCode.find('-') > 0:
         aeraCode = aeraCode.split('-')
         aeraCode = random.choice(aeraCode)
-    return gener(segments[0], aeraCode[1:])
+    return gener(segments[0], aeraCode[1:], country)
 
 
 

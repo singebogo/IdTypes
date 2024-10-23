@@ -76,4 +76,7 @@
 ![团体](https://img2024.cnblogs.com/blog/2007173/202403/2007173-20240313175704510-591203619.png)
 
 ### 电话号码
-![电话号码](https://github.com/singebogo/IdTypes/blob/master/vx_images/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81.bmp)	
+![电话号码](https://github.com/singebogo/IdTypes/blob/master/vx_images/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81.bmp)
+
+###固定电话
+![固定电话](https://github.com/singebogo/IdTypes/blob/master/vx_images/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81.bmp)	
