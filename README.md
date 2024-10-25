@@ -6,79 +6,80 @@
 		可用功能：界面置顶功能
 
 ## 项目目录
-├─Cards
-│  │  Cards.json
-│  │  Cards.py
-│  │  nba.db
-│  │
-│  ├─.idea
-│  │  │  .gitignore
-│  │  │  dataSources.local.xml
-│  │  │  dataSources.xml
-│  │  │  it_tools.iml
-│  │  │  misc.xml
-│  │  │  modules.xml
-│  │  │  vcs.xml
-│  │  │  workspace.xml
-│  │  │
-│  │  ├─dataSources
-│  │  │      e7bf2e6a-e9b0-4dd8-8bfa-999168e99bac.xml
-│  │  │
-│  │  └─inspectionProfiles
-│  │          profiles_settings.xml
-│  │
-│  ├─assers
-│  │      证件.png
-│  │
-│  ├─gui
-│  │  │  __init__.py
-│  │  │
-│  │  ├─controlFrame
-│  │  │      controlFrame.py
-│  │  │      customNotebook.py
-│  │  │      phone_controlFrame.py
-│  │  │      __init__.py
-│  │  │
-│  │  └─converterFrame
-│  │          commonFrame.py
-│  │          fixedLineTelephoneConverterFrame.py
-│  │          groupConverterFrame.py
-│  │          IDConverterFrame.py
-│  │          OtherConverterFrame.py
-│  │          personConverterFrame.py
-│  │          phoneConverterFrame.py
-│  │          settingConverterFrame.py
-│  │          __init__.py
-│  │
-│  ├─output
-│  │      Cards.exe
-│  │
-│  └─utils
-│      │  aesUtil.py
-│      │  areaCode.py
-│      │  Calendar.py
-│      │  contains.py
-│      │  fakers.py
-│      │  frameTypes.py
-│      │  IDCards.py
-│      │  iIndustrial.py
-│      │  organization.py
-│      │  other.py
-│      │  phones.py
-│      │  region.py
-│      │  socialCreditCode.py
-│      │  taxpayerIdentificationNumber.py
-│      │  taxRegistration.py
-│      │  temperatureConverter.py
-│      │  __init__.py
-│      │
-│      ├─dbLites
-│      │      comLite.py
-│      │      __init__.py
-│      │
-│      └─threading
-│              stopped_able_threading.py
-│              __init__.py
+
+		├─Cards
+		│  │  Cards.json
+		│  │  Cards.py
+		│  │  nba.db
+		│  │
+		│  ├─.idea
+		│  │  │  .gitignore
+		│  │  │  dataSources.local.xml
+		│  │  │  dataSources.xml
+		│  │  │  it_tools.iml
+		│  │  │  misc.xml
+		│  │  │  modules.xml
+		│  │  │  vcs.xml
+		│  │  │  workspace.xml
+		│  │  │
+		│  │  ├─dataSources
+		│  │  │      e7bf2e6a-e9b0-4dd8-8bfa-999168e99bac.xml
+		│  │  │
+		│  │  └─inspectionProfiles
+		│  │          profiles_settings.xml
+		│  │
+		│  ├─assers
+		│  │      证件.png
+		│  │
+		│  ├─gui
+		│  │  │  __init__.py
+		│  │  │
+		│  │  ├─controlFrame
+		│  │  │      controlFrame.py
+		│  │  │      customNotebook.py
+		│  │  │      phone_controlFrame.py
+		│  │  │      __init__.py
+		│  │  │
+		│  │  └─converterFrame
+		│  │          commonFrame.py
+		│  │          fixedLineTelephoneConverterFrame.py
+		│  │          groupConverterFrame.py
+		│  │          IDConverterFrame.py
+		│  │          OtherConverterFrame.py
+		│  │          personConverterFrame.py
+		│  │          phoneConverterFrame.py
+		│  │          settingConverterFrame.py
+		│  │          __init__.py
+		│  │
+		│  ├─output
+		│  │      Cards.exe
+		│  │
+		│  └─utils
+		│      │  aesUtil.py
+		│      │  areaCode.py
+		│      │  Calendar.py
+		│      │  contains.py
+		│      │  fakers.py
+		│      │  frameTypes.py
+		│      │  IDCards.py
+		│      │  iIndustrial.py
+		│      │  organization.py
+		│      │  other.py
+		│      │  phones.py
+		│      │  region.py
+		│      │  socialCreditCode.py
+		│      │  taxpayerIdentificationNumber.py
+		│      │  taxRegistration.py
+		│      │  temperatureConverter.py
+		│      │  __init__.py
+		│      │
+		│      ├─dbLites
+		│      │      comLite.py
+		│      │      __init__.py
+		│      │
+		│      └─threading
+		│              stopped_able_threading.py
+		│              __init__.py
 
 ## 运行
     python Cards.py
