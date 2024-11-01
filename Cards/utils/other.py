@@ -22,3 +22,4 @@ class Other():
 
     def credit_code(self):
         return generate_uniform_credit_code()
+

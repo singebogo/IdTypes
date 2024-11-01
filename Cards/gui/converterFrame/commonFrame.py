@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showerror
 from utils.Calendar import Calendar
-from utils.region import select_province_sql, select_city_sql, select_district_sql, select_street_sql
+from utils.dbLites.region import select_province_sql, select_city_sql, select_district_sql, select_street_sql
 
 
 class CommonConverterFrame(ttk.Frame):
@@ -93,8 +93,6 @@ class CommonConverterFrame(ttk.Frame):
         district = self.district_var.get()
         district_index = self.district_com['value'].index(district)
         district_tuple = self.districts[district_index]
-        self.streets = select_street_sql(district_tuple[0])
-
         self.streets = select_street_sql(district_tuple[0])
         if len(self.streets) <= 0:
             self.street_com['value'] = []

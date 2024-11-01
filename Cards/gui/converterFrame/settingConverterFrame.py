@@ -6,7 +6,8 @@ import win32gui
 import win32con
 
 from utils.threading.stopped_able_threading import StoppableThread
-from utils.region import *
+from utils.dbLites.region import *
+from utils.dbLites.bnkLite import get as bankGet, dele as bnkDelete
 from utils.contains import key
 from utils.dbLites.comLite import local_db
 
@@ -48,7 +49,7 @@ class SettingConverterFrame(ttk.Frame):
         self.result_label = tk.Text(self, width=48, height=5)
         self.result_label.grid(row=2,column=0, columnspan=4, **{'padx': 5, 'pady': 10})
 
-        self.result_label.insert(tk.END, "因获取地区代码需计流量，付费行为，估停止服务，可以使用替换数据库目录：" + '\n')
+        self.result_label.insert(tk.END, "因获取地区代码需计流量，付费行为，故停止服务，可以使用替换数据库目录：" + '\n')
         self.result_label.see("end")
         self.result_label.configure(state='disabled')
 
@@ -105,12 +106,14 @@ class SettingConverterFrame(ttk.Frame):
         pass
 
     def Conn(self):
-        self.result_label.config(text="数据删除开始...")
+        self.log_label.config(text="数据删除开始...")
         #dele()
-        self.result_label.config(text="数据删除完成...")
-        self.result_label.config(text="数据更新开始...")
+        bnkDelete()
+        self.log_label.config(text="数据删除完成...")
+        self.log_label.config(text="数据更新开始...")
         #get(self.log_label)
+        bankGet(self.log_label)
         self.log_label.config(text="Key 无效，请替换数据库！")
-        self.result_label.config(text="数据更新完成...")
+        self.log_label.config(text="数据更新完成...")
 
 

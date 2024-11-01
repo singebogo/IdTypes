@@ -9,6 +9,7 @@ import os
 from gui.controlFrame.controlFrame import ControlFrame
 from gui.controlFrame.customNotebook import CustomNotebook
 from gui.controlFrame.phone_controlFrame import PhoneControlFrame
+from gui.converterFrame.banksConverterFrame import BanksConverterFrame
 from gui.converterFrame.settingConverterFrame import SettingConverterFrame
 
 
@@ -89,6 +90,9 @@ class App(tk.Tk):
 
         self.phoneFrame = PhoneControlFrame(self.notebook)
         self.phoneFrame_tab = self.notebook.add(self.phoneFrame, text="电话号码")
+
+        self.bankFrame = BanksConverterFrame(self.notebook)
+        self.bankFrame_tab = self.notebook.add(self.bankFrame, text="银行账号")
 
         self.setting = SettingConverterFrame(self.notebook)
         self.setting_tab = self.notebook.add(self.setting, text="设置")

@@ -5,7 +5,7 @@ from utils.temperatureConverter import TemperatureConverter
 from gui.converterFrame.groupConverterFrame import GroupConverterFrame
 from gui.converterFrame.personConverterFrame import PersonConverterFrame
 from gui.converterFrame.settingConverterFrame import SettingConverterFrame
-from utils.region import select_province_sql
+from utils.dbLites.region import select_province_sql
 
 
 class ControlFrame(ttk.LabelFrame):

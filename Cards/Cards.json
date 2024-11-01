@@ -108,6 +108,18 @@
   {
    "optionDest": "hiddenimports",
    "value": "datetime"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "appdirs"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "win32gui"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "ijson"
   }
  ],
  "nonPyinstallerOptions": {
